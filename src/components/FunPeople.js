@@ -40,7 +40,7 @@ class FunPeople extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        this.state.funPeople.push(this.state.name + ' is fun because ' + this.state.reason)
+        this.state.funPeople.push({text: this.state.name + ' is fun because ' + this.state.reason, name: this.state.name})
         this.clearForm()
     }
 
@@ -72,9 +72,9 @@ class FunPeople extends Component {
                         this.state.funPeople.map((item, index) => 
                         <div className="column is-4" key={index}>
                             <div className="box content is-medium">
-                                <p>{item}</p> 
+                                <p>{item.text}</p> 
                                 <button className="button is-link"
-                                        onClick={() => this.removeFunPerson(index)}>Remove</button>
+                                        onClick={() => this.removeFunPerson(index)}>Remove {item.name}</button>
                             </div>
                         </div>
                     )
